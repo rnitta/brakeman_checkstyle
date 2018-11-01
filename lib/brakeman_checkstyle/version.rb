@@ -1,0 +1,3 @@
+module BrakemanCheckstyle
+  VERSION = "0.0.1"
+end

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'brakeman_checkstyle'
+
+BrakemanCheckstyle::CLI.start
