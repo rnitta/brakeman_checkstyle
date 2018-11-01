@@ -22,7 +22,32 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+on circleci
+
+
+```yml
+# .circleci/config.yml
+
+- run: bash .circleci/run-brakeman.sh
+```
+
+```bash
+# .circleci/run-brakeman.sh
+
+#!/bin/bash
+set -v
+if [ "${CIRCLE_BRANCH}" != "master" ]; then
+  gem install --no-document brakeman brakeman_checkstyle \
+              checkstyle_filter-git saddler saddler-reporter-github
+
+  echo -n ${CIRCLE_WORKING_DIRECTORY} | brakeman_checkstyle out \
+   | checkstyle_filter-git diff origin/master \
+   | saddler report \
+      --require saddler/reporter/github \
+      --reporter Saddler::Reporter::Github::PullRequestReviewComment
+fi
+exit 0
+```
 
 ## Development
 
