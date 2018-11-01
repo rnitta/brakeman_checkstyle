@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    brakeman_checkstyle (0.1.0)
+    brakeman_checkstyle (0.0.1)
       brakeman
       thor
 
